@@ -1,0 +1,305 @@
+* {
+    box-sizing: border-box;
+}
+
+/* BASE */
+
+html {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #292929;
+    line-height: 1.4;
+    background-color: rgb(229, 226, 226);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.text-control-btns button, .text-style-btns button {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+/* LAYOUT */
+
+.main-layout {
+    max-width: 981px;
+    margin: 0 auto;
+}
+
+.main-container {
+    padding: 1.5em;
+}
+
+/* HEADER */
+
+.main-header-container {
+    /* position: fixed; FOR SCROLLING, CONSIDERUSING ON MOBILE */
+    width: 100vw;
+    background-color: #ff7f00;
+    color: whitesmoke;
+}
+
+.main-header .logo {
+    font-size: 2.5em;
+    text-decoration: none;
+}
+
+.main-header .main-nav li {
+    padding: 2em;
+}
+
+/* GALLERY */
+
+.imgs-container {
+    grid-template: repeat(12, 1fr) / repeat(12, 1fr);
+    grid-auto-flow: column;
+    gap: 10px;
+    max-height: 50px;
+}
+
+.square {
+    grid-row: span 12;
+    grid-column: span 1;
+    max-height: 50px;
+    max-width: 50px;
+}
+
+.portrait {
+    grid-row: span 8;
+    grid-column: span 4;
+    max-height: 100px;
+    max-width: 50px;
+}
+
+.landscape {
+    grid-row: span 4;
+    grid-column: span 12;
+    max-height: 50px;
+    max-width: 100px;
+}
+
+/* CANVAS */
+
+.first-panel {
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+/* EDITOR */
+
+.second-panel {
+    flex-grow: 1;
+    flex-basis: 50%;
+    margin-inline-start: 3em;
+}
+
+.text-style-btns, .text-control-btns, .font-style-btns, .sticker-container {
+    width: 100%;
+}
+
+.font-style-btns, .sticker-container {
+    padding: 1em;
+}
+
+.editor-container button {
+    background-color: whitesmoke;
+    border: none;
+    border-radius: .9em;
+    margin: 1em;
+    padding: .5em;
+}
+
+.editor-container button:hover {
+    background-color: rgb(218, 216, 216);
+}
+
+input[type="text"] {
+    width: 100%;
+    line-height: 2em;
+    font-size: 1.2em;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: .9em;
+    margin: 1em;
+    padding: .5em;
+}
+
+input[type="color"] {
+    appearance: none;
+    border: none;
+    width: 32px;
+    height: 32px;
+}
+
+input[type="color"]:hover {
+    cursor: pointer;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+.editor-container a {
+    margin: 20px 50px;
+    padding: 10px 40px;
+    border-radius: .75em;
+    background-color: #ff7f00
+}
+
+.editor-container a:hover {
+    transform: scale(1.1);
+}
+
+/* FOOTER */
+
+.main-footer {
+    padding: 2em 0;
+    background-color: #ff7f00;
+}
+
+.main-footer .footer-container {
+    line-height: 3em;
+}
+
+.main-footer .logo {
+    font-size: 2.5em;
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+/* SOCIAL MEDIA */
+
+.social-container li:not(:first-child) {
+    margin-inline-start: 10px;
+}
+
+.social-container .fa {
+    padding: 10px;
+    font-size: 15px;
+    width: 35px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    transition: transform 0.2s;
+}
+
+/* Facebook */
+
+.social-container .fa-facebook:hover {
+    color: #3B5998;
+    opacity: 0.8;
+    transform: scale(1.5);
+}
+
+/* Instagram */
+
+.social-container .fa-instagram:hover {
+    color: #cb2027;
+    opacity: 0.8;
+    transform: scale(1.5);
+}
+
+/* LinkedIn */
+
+.social-container .fa-linkedin:hover {
+    color: #007bb5;
+    opacity: 0.8;
+    transform: scale(1.5);
+}
+
+/* GitHub */
+
+.social-container .fa-github:hover {
+    color: black;
+    opacity: 0.8;
+    transform: scale(1.5);
+}
+
+/* HELPERS */
+
+/* grid-helpers */
+
+.grid {
+    display: grid;
+    color: black;
+}
+
+/* flex-helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex.col {
+    flex-direction: column;
+}
+
+.inline-flex {
+    display: inline-flex;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.center {
+    justify-content: center;
+}
+
+/* list-helpers */
+
+.clean-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+/* SCREENS */
+
+@media (max-width: 550px) {
+    .main-container {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 550px) {
+    .main-container {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 900px) {
+    .main-container {
+        flex-direction: row;
+    }
+}

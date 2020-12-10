@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- FONT AWESOME -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- FAVICON -->
+    <link rel="shortcut icon" href="imgs/favicon_io/favicon.ico" type="image/x-icon">
+
+    <title>Meme Generator</title>
+</head>
+
+<body onload="onInit()" class="flex col space-between">
+    <div class="main-header-container">
+        <header class="main-header main-layout flex space-between align-center">
+
+            <div><a href="#" class="logo">Meme Generator</a></div>
+
+            <ul class="main-nav clean-list flex">
+                <li class="flex align-center" href="#">Gallery</li>
+                <li class="flex align-center" href="#">Saved</li>
+                <li class="flex align-center" href="#">About</li>
+            </ul>
+            <!-- <button class="menu-btn" onclick="onToggleMenu()">☰</button> -->
+        </header>
+    </div>
+
+    <section class="gallery">
+        <div class="imgs imgs-container grid">Couldn't Load Images</div>
+
+    </section>
+
+    <section class="main-container main-layout flex space-between">
+
+        <div class="first-panel canvas-container">
+            <canvas id="my-canvas" height="400" width="400"></canvas>
+        </div>
+
+        <div class="second-panel editor-container flex col space-between align-center">
+
+            <input type="text" name="canvas-text" placeholder="Enter your text here..." oninput="onType()">
+
+            <div class="text-control-btns flex space-between">
+                <button class="up-btn"> <img class="pos" src="icons/up-arrow.png" onclick="onChangePos(-10)">
+                </button>
+
+                <button class="down-btn"> <img class="pos" src="icons/down-arrow.png" onclick="onChangePos(10)">
+                </button>
+
+                <button class="switch-btn"> <img class="pos" src="icons/up-and-down-arrows.png">
+                </button>
+
+                <button class="add-btn"> <img class="add" src="icons/add.png">
+                </button>
+
+                <button class="remove-btn"> <img class="remove" src="icons/trash.png">
+                </button>
+            </div>
+
+            <div class="text-style-btns flex space-between">
+                <button class="increase-btn"> <img class="increase" src="icons/increase font - icon.png"
+                        onclick="onChangeSize(4)">
+                </button>
+
+                <button class="decrease-btn"> <img class="decrease" src="icons/decrease font - icon.png"
+                        onclick="onChangeSize(-4)">
+                </button>
+
+                <button class="atl-btn"> <img class="atl" src="icons/align-to-left.png" onclick="onTextAlign('left')">
+                </button>
+
+                <button class="atc-btn"> <img class="atc" src="icons/center-text-alignment.png"
+                        onclick="onTextAlign('center')">
+                </button>
+
+                <button class="atr-btn"> <img class="atr" src="icons/align-to-right.png" onclick="onTextAlign('right')">
+                </button>
+            </div>
+
+            <div class="font-style-btns flex space-between">
+                <select name="fonts" onchange="onFontChange(this.value)">
+                    <option value="impact">Impact</option>
+                    <option value="tahoma">Tahoma</option>
+                    <option value="arial">Arial</option>
+                </select>
+
+                <label for="stroke">Stroke:</label>
+                <input type="color" name="stroke" oninput="onStrokeChange(this.value)">
+
+                <label for="fill">Fill:</label>
+                <input type="color" name="fill" oninput="onFillChange(this.value)">
+            </div>
+
+            <div class="sticker-container flex space-between">
+                <select name="stickers">
+                    <option value="sticker1">sticker1</option>
+                    <option value="sticker2">sticker2</option>
+                </select>
+            </div>
+
+            <a href="#" class="download" onclick="onDownload(this)" download="my-meme.jpg">Download</a>
+            <a href="#" class="share">Share</a>
+        </div>
+
+    </section>
+
+    <footer class="main-footer">
+        <div class="footer-container main-layout flex col align-center space-between">
+            <div><a href="#" class="logo">Meme Generator</a></div>
+            <small>© 2020 MemeGen.com - All Rights Reserved - Made With ❤️ By Tair Bitan</small>
+            <div class="social-container">
+                <ul class="social-nav clean-list inline-flex">
+                    <li>
+                        <a href="#" class="fa fa-facebook"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-instagram"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-linkedin"></a>
+                    </li>
+                    <li>
+                        <a href="#" class="fa fa-github"></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+</body>
+
+</html>

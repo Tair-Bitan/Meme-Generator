@@ -21,7 +21,7 @@
             <div><a href="#" class="logo">Meme Generator</a></div>
 
             <ul class="main-nav clean-list flex">
-                <li class="flex align-center" href="#">Gallery</li>
+                <li class="flex align-center" href="#" onclick="onShowGallery()">Gallery</li>
                 <li class="flex align-center" href="#">Saved</li>
                 <li class="flex align-center" href="#">About</li>
             </ul>
@@ -34,7 +34,7 @@
 
     </section>
 
-    <section class="main-container main-layout flex space-between">
+    <section class="main-container main-layout space-between">
 
         <div class="first-panel canvas-container">
             <canvas id="my-canvas" height="400" width="400"></canvas>
@@ -42,7 +42,8 @@
 
         <div class="second-panel editor-container flex col space-between align-center">
 
-            <input type="text" name="canvas-text" placeholder="Enter your text here..." oninput="onType()" onfocus="onSetFocus()" onkeyup="handleKey(event)">
+            <input type="text" name="canvas-text" placeholder="Enter your text here..." oninput="onType()"
+                onfocus="onSetFocus()" onkeyup="handleKey(event)">
 
             <div class="text-control-btns flex space-between">
                 <button class="up-btn"> <img class="pos" src="icons/up-arrow.png" onclick="onChangePos(-10)">
@@ -51,7 +52,8 @@
                 <button class="down-btn"> <img class="pos" src="icons/down-arrow.png" onclick="onChangePos(10)">
                 </button>
 
-                <button class="switch-btn"> <img class="pos" src="icons/up-and-down-arrows.png" onclick="onChangeLine()">
+                <button class="switch-btn"> <img class="pos" src="icons/up-and-down-arrows.png"
+                        onclick="onChangeLine()">
                 </button>
 
                 <button class="add-btn"> <img class="add" src="icons/add.png">

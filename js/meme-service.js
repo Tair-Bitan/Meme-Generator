@@ -2,8 +2,17 @@
 // ---------------------------------------- DATA -------------------------------------------
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 2, url: 'imgs/meme-imgs (square)/10.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 3, url: 'imgs/meme-imgs (square)/11.jpg', ratio: 'square', keywords: ['happy'] }
+    { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 11, url: 'imgs/meme-imgs (square)/11.jpg', ratio: 'square', keywords: ['happy'] },
+    { id: 12, url: 'imgs/meme-imgs (square)/12.jpg', ratio: 'square', keywords: ['happy'] }
 ];
 
 var gMeme = {

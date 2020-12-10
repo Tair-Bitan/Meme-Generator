@@ -11,8 +11,21 @@ function onInit() {
 }
 
 function onChooseImg(imgId) {
+    var elGallery = document.querySelector('.gallery');
+    elGallery.style.display = 'none';
+
+    var elMain = document.querySelector('.main-container');
+    elMain.classList.add('flex');
     gMeme.selectedImgId = imgId;
     drawImg();
+}
+
+function onShowGallery() {
+    var elGallery = document.querySelector('.gallery');
+    elGallery.style.display = 'grid';
+
+    var elMain = document.querySelector('.main-container');
+    elMain.classList.remove('flex');
 }
 
 function onType() {

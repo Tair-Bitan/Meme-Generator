@@ -42,7 +42,7 @@
 
         <div class="second-panel editor-container flex col space-between align-center">
 
-            <input type="text" name="canvas-text" placeholder="Enter your text here..." oninput="onType()">
+            <input type="text" name="canvas-text" placeholder="Enter your text here..." oninput="onType()" onfocus="onSetFocus()" onkeyup="handleKey(event)">
 
             <div class="text-control-btns flex space-between">
                 <button class="up-btn"> <img class="pos" src="icons/up-arrow.png" onclick="onChangePos(-10)">
@@ -51,7 +51,7 @@
                 <button class="down-btn"> <img class="pos" src="icons/down-arrow.png" onclick="onChangePos(10)">
                 </button>
 
-                <button class="switch-btn"> <img class="pos" src="icons/up-and-down-arrows.png">
+                <button class="switch-btn"> <img class="pos" src="icons/up-and-down-arrows.png" onclick="onChangeLine()">
                 </button>
 
                 <button class="add-btn"> <img class="add" src="icons/add.png">

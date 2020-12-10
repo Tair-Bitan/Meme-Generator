@@ -10,15 +10,44 @@ function onInit() {
     drawImg();
 }
 
+function onChooseImg(imgId) {
+    gMeme.selectedImgId = imgId;
+    drawImg();
+}
+
 function onType() {
     var elText = document.querySelector('input[type="text"]').value;
     updateText(elText);
     drawImg();
 }
 
-function onChooseImg(imgId) {
-    gMeme.selectedImgId = imgId;
+function onSetFocus() {
+    setFocus(gMeme.selectedLineIdx);
     drawImg();
+}
+
+function handleKey(ev) {
+    if (ev.keyCode === 13) {
+        onChangeLine();
+    }
+}
+
+function onChangePos(diff) {
+    updatePosY(diff);
+    drawImg();
+}
+
+function onChangeLine() {
+    updateLineIndx();
+    drawImg();
+}
+
+function onAddLine() {
+
+}
+
+function onRemoveLine() {
+
 }
 
 function onChangeSize(diff) {
@@ -26,10 +55,6 @@ function onChangeSize(diff) {
     drawImg();
 }
 
-function onChangePos(diff) {
-    updatePosY(diff);
-    drawImg();
-}
 
 function onTextAlign(dir) {
     updatePosX(dir);

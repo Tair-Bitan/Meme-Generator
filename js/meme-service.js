@@ -18,7 +18,8 @@ var gMeme = {
             align: 'center',
             fill: 'white',
             stroke: 'black',
-            pos: { x: 200, y: 50 }
+            pos: { x: 200, y: 50 },
+            isFocused: false
         },
         {
             text: 'i will never make memes',
@@ -27,7 +28,8 @@ var gMeme = {
             align: 'center',
             fill: 'white',
             stroke: 'black',
-            pos: { x: 200, y: 200 }
+            pos: { x: 200, y: 200 },
+            isFocused: false
         },
         {
             text: 'agian in my life',
@@ -36,7 +38,8 @@ var gMeme = {
             align: 'center',
             fill: 'white',
             stroke: 'black',
-            pos: { x: 200, y: 350 }
+            pos: { x: 200, y: 350 },
+            isFocused: false
         }
     ]
 };
@@ -45,68 +48,77 @@ var gMeme = {
 
 function updateText(newText) {
     // _getLine();
-    gMeme.lines[0].text = newText;
+    gMeme.lines[gMeme.selectedLineIdx].text = newText;
 }
 
 function updateSize(diff) {
     // _getLine();
-    gMeme.lines[0].size += diff;
+    gMeme.lines[gMeme.selectedLineIdx].size += diff;
 }
 
 function updatePosY(diff) {
     // _getLine();
-    if (gMeme.lines[0].pos.y >= gCanvas.height) {
-        gMeme.lines[0].pos.y -= 10;
+    if (gMeme.lines[gMeme.selectedLineIdx].pos.y >= gCanvas.height) {
+        gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10;
     }
-    if (gMeme.lines[0].pos.y <= 30) {
-        gMeme.lines[0].pos.y += 10;
+    if (gMeme.lines[gMeme.selectedLineIdx].pos.y <= 30) {
+        gMeme.lines[gMeme.selectedLineIdx].pos.y += 10;
     } else {
-        gMeme.lines[0].pos.y += diff;
-        console.log('y is:', gMeme.lines[0].pos.y);
+        gMeme.lines[gMeme.selectedLineIdx].pos.y += diff;
+        console.log('y is:', gMeme.lines[gMeme.selectedLineIdx].pos.y);
     }
 }
 
 function updatePosX(dir) {
+    // _getLine();
     switch (dir) {
         case 'left':
-            gMeme.lines[0].align = 'left';
-            gMeme.lines[0].pos.x = 5;
+            gMeme.lines[gMeme.selectedLineIdx].align = 'left';
+            gMeme.lines[gMeme.selectedLineIdx].pos.x = 5;
             break;
         case 'center':
-            gMeme.lines[0].align = 'center';
-            gMeme.lines[0].pos.x = 200;
+            gMeme.lines[gMeme.selectedLineIdx].align = 'center';
+            gMeme.lines[gMeme.selectedLineIdx].pos.x = 200;
             break;
         case 'right':
-            gMeme.lines[0].align = 'right';
-            gMeme.lines[0].pos.x = 395;
+            gMeme.lines[gMeme.selectedLineIdx].align = 'right';
+            gMeme.lines[gMeme.selectedLineIdx].pos.x = 395;
             break;
     }
 }
 
 function updateFont(newFont) {
     // _getLine();
-    gMeme.lines[0].font = newFont;
+    gMeme.lines[gMeme.selectedLineIdx].font = newFont;
 }
 
 function updateStroke(color) {
     // _getLine();
-    gMeme.lines[0].stroke = color;
+    gMeme.lines[gMeme.selectedLineIdx].stroke = color;
 }
 
 function updateFill(color) {
     // _getLine();
-    gMeme.lines[0].fill = color;
+    gMeme.lines[gMeme.selectedLineIdx].fill = color;
 }
 
-// function _getLine(lineIdx) {
-//     var lineIndex = gMeme.lines.findIndex(function (line) {
-//         return lineIdx === line.idx;
-//     });
+function updateLineIndx() {
+    // console.log('before', gMeme.selectedLineIdx);
+    if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
+    else gMeme.selectedLineIdx += 1;
+    // console.log('afte', gMeme.selectedLineIdx);
 
-//     return gMeme.lines[lineIndex].text;
-// }
+    //CONSIDER INSERT drawImg() HERE INSTEAD OF IN onChangeLine() at controller
+    setFocus(gMeme.selectedLineIdx);
+}
 
 // ----------------------------------- RENDER CANVAS AND LINES --------------------------------------
+function setFocus(currLine) {
+    console.log('focus on lineindx', currLine);
+    gMeme.lines.forEach(line => line.isFocused = false);
+    gMeme.lines[currLine].isFocused = true;
+}
+
 function drawImg() {
     var img = new Image();
     var imgSrc = _getImgSrc(gMeme.selectedImgId);
@@ -128,8 +140,17 @@ function drawText(line) {
     gCtx.lineWidth = '2.5'
     gCtx.fillStyle = line.fill;
     gCtx.fillText(line.text, line.pos.x, line.pos.y);
-    gCtx.strokeStyle = line.Stroke;
+    gCtx.strokeStyle = line.stroke;
     gCtx.strokeText(line.text, line.pos.x, line.pos.y);
+    if (line.isFocused) { //TO FIX: OUTLINE WHEN TEXT IS NOT CENTERED
+        var text = gCtx.measureText(line.text);
+        var width = text.width;
+        var height = line.size;
+        var x = line.pos.x;
+        var y = line.pos.y;
+        gCtx.strokeStyle = 'white';
+        gCtx.strokeRect(x - (width / 2), y + 10, width, -height); //x, y, width, heigt
+    }
 }
 
 function _getImgSrc(imgId) {

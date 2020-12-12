@@ -48,7 +48,10 @@ function onSetFocus() {
 
 function handleKey(ev) {
     if (ev.keyCode === 13) {
+        onChangeLine();
+    } else if (ev.keyCode === 32) {
         onAddLine();
+        drawImg();
     }
 }
 
@@ -58,6 +61,7 @@ function onChangePos(diff) {
 }
 
 function onChangeLine() {
+    document.querySelector('input[name="canvas-text"]').value = '';
     updateLineIndx();
     drawImg();
 }

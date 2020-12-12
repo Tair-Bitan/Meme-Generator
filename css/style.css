@@ -71,10 +71,34 @@ li:hover {
     padding: 2em;
 }
 
+/* SEARCH NAV */
+form{
+    text-align: center;
+}
+.search input[type="text"] {
+    width: 20em;
+    height: 3em;
+    margin-inline-end: 0px;
+}
+
+.search input[type="text"]:focus {
+    outline-style: none;
+}
+
+.search button {
+    font-size: 1.2em;
+    margin-inline-start: -30px;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: .9em;
+    /* padding: .5em; */
+    height: 3em;
+}
+
 /* GALLERY */
 
 .gallery {
-    height: 50vh;
+    margin: 2em 0;
 }
 
 .imgs-container {

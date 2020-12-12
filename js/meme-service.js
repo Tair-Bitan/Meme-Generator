@@ -1,18 +1,18 @@
 'use strict'
 // ---------------------------------------- DATA -------------------------------------------
 var gImgs = [
-    { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 11, url: 'imgs/meme-imgs (square)/11.jpg', ratio: 'square', keywords: ['happy'] },
-    { id: 12, url: 'imgs/meme-imgs (square)/12.jpg', ratio: 'square', keywords: ['happy'] }
+    { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', ratio: 'square', keywords: ['man', 'angry', 'people', 'all'] },
+    { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', ratio: 'square', keywords: ['cute', 'animals', 'dogs', 'all'] },
+    { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', ratio: 'square', keywords: ['cute', 'animals', 'people', 'dogs', 'all'] },
+    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', ratio: 'square', keywords: ['animala', 'cute', 'cats', 'all'] },
+    { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', ratio: 'square', keywords: ['cute', 'people', 'child', 'funny', 'baby', 'angry', 'all'] },
+    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', ratio: 'square', keywords: ['people', 'aliens', 'man', 'all'] },
+    { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', ratio: 'square', keywords: ['cute', 'people', 'child', 'funny', 'baby', 'curious', 'all'] },
+    { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', ratio: 'square', keywords: ['happy', 'people', 'all'] },
+    { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', ratio: 'square', keywords: ['happy', 'people', 'child', 'baby', 'funny', 'all'] },
+    { id: 10, url: 'imgs/meme-imgs (square)/10.jpg', ratio: 'square', keywords: ['happy', 'people', 'man', 'funny', 'all'] },
+    { id: 11, url: 'imgs/meme-imgs (square)/11.jpg', ratio: 'square', keywords: ['people', 'man', 'funny', 'sport', 'kiss', 'all'] },
+    { id: 12, url: 'imgs/meme-imgs (square)/12.jpg', ratio: 'square', keywords: ['people', 'man', 'all'] }
 ];
 
 var gMeme = {
@@ -112,13 +112,19 @@ function updateFill(color) {
 }
 
 function updateLineIndx() {
-    // console.log('before', gMeme.selectedLineIdx);
     if (gMeme.selectedLineIdx === gMeme.lines.length - 1) gMeme.selectedLineIdx = 0;
     else gMeme.selectedLineIdx += 1;
-    // console.log('afte', gMeme.selectedLineIdx);
-
-    //CONSIDER INSERT drawImg() HERE INSTEAD OF IN onChangeLine() at controller
     setFocus(gMeme.selectedLineIdx);
+}
+
+function filterBySearch(input) {
+    var key = input;
+    if (!key || key === '') return gImgs;
+    var gallery = gImgs.filter(img => {
+        // debugger
+        return img.keywords.includes(key);
+    });
+    return gallery;
 }
 
 // ----------------------------------- RENDER CANVAS AND LINES --------------------------------------

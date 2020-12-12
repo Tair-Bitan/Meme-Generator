@@ -16,6 +16,10 @@ function onChooseImg(imgId) {
 
     var elMain = document.querySelector('.main-container');
     elMain.classList.add('flex');
+
+    var elSearch = document.querySelector('input[name="search"]');
+    elSearch.style.display = 'none';
+
     gMeme.selectedImgId = imgId;
     drawImg();
 }
@@ -26,10 +30,13 @@ function onShowGallery() {
 
     var elMain = document.querySelector('.main-container');
     elMain.classList.remove('flex');
+
+    var elSearch = document.querySelector('input[name="search"]');
+    elSearch.style.display = 'inline-block';
 }
 
 function onType() {
-    var elText = document.querySelector('input[type="text"]').value;
+    var elText = document.querySelector('input[name="canvas-text"]').value;
     updateText(elText);
     drawImg();
 }
@@ -92,4 +99,10 @@ function onFillChange(color) {
 function onDownload(elLink) {
     var imgContent = gCanvas.toDataURL('image/jpeg');
     elLink.href = imgContent;
+}
+
+function onSearch() {
+    var elInput = document.querySelector('input[name="search"]').value;
+    var filtered = filterBySearch(elInput);
+    renderImgs(filtered);
 }

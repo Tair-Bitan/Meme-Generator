@@ -21,7 +21,7 @@ var gMeme = {
 
     lines: [
         {
-            text: 'i hate this sprint',
+            text: 'waiting for text..',
             size: 52,
             font: 'impact',
             align: 'center',
@@ -31,7 +31,7 @@ var gMeme = {
             isFocused: false
         },
         {
-            text: 'i will never make memes',
+            text: '',
             size: 52,
             font: 'impact',
             align: 'center',
@@ -41,7 +41,7 @@ var gMeme = {
             isFocused: false
         },
         {
-            text: 'agian in my life',
+            text: '',
             size: 52,
             font: 'impact',
             align: 'center',
@@ -54,19 +54,16 @@ var gMeme = {
 };
 
 // ----------------------------------- MEME MANIPULATIONS --------------------------------------
-
+//UPDATE
 function updateText(newText) {
-    // _getLine();
     gMeme.lines[gMeme.selectedLineIdx].text = newText;
 }
 
 function updateSize(diff) {
-    // _getLine();
     gMeme.lines[gMeme.selectedLineIdx].size += diff;
 }
 
 function updatePosY(diff) {
-    // _getLine();
     if (gMeme.lines[gMeme.selectedLineIdx].pos.y >= gCanvas.height) {
         gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10;
     }
@@ -79,7 +76,6 @@ function updatePosY(diff) {
 }
 
 function updatePosX(dir) {
-    // _getLine();
     switch (dir) {
         case 'left':
             gMeme.lines[gMeme.selectedLineIdx].align = 'left';
@@ -97,17 +93,14 @@ function updatePosX(dir) {
 }
 
 function updateFont(newFont) {
-    // _getLine();
     gMeme.lines[gMeme.selectedLineIdx].font = newFont;
 }
 
 function updateStroke(color) {
-    // _getLine();
     gMeme.lines[gMeme.selectedLineIdx].stroke = color;
 }
 
 function updateFill(color) {
-    // _getLine();
     gMeme.lines[gMeme.selectedLineIdx].fill = color;
 }
 
@@ -127,13 +120,41 @@ function filterBySearch(input) {
     return gallery;
 }
 
-// ----------------------------------- RENDER CANVAS AND LINES --------------------------------------
 function setFocus(currLine) {
     console.log('focus on lineindx', currLine);
     gMeme.lines.forEach(line => line.isFocused = false);
     gMeme.lines[currLine].isFocused = true;
 }
 
+// ----------------------------------- CREATE \ DELETE LINES --------------------------------------
+//CREATE
+function _createLine() {
+    return {
+        text: 'new line',
+        size: 52,
+        font: 'impact',
+        align: 'center',
+        fill: 'white',
+        stroke: 'black',
+        pos: { x: 200, y: 250 },
+        isFocused: true
+    }
+}
+
+function createLines() {
+    var line = _createLine();
+    gMeme.lines.push(line);
+}
+
+//DELETE
+function removeLines() {
+    gMeme.lines.splice(gMeme.lines.length - 1, 1);
+}
+
+
+// ----------------------------------- RENDER CANVAS AND LINES --------------------------------------
+
+//LIST
 function drawImg() {
     var img = new Image();
     var imgSrc = _getImgSrc(gMeme.selectedImgId);
@@ -168,15 +189,6 @@ function drawText(line) {
     }
 }
 
-function _getImgSrc(imgId) {
-    // imgIdx needed to find img src url in gImgs[]
-    var imgIdx = gImgs.findIndex(function (img) {
-        return imgId === img.id;
-    });
-
-    return gImgs[imgIdx].url;
-}
-
 function renderImgs(imgs) {
     var strHtml = imgs.map(function (img) {
         return `
@@ -187,3 +199,14 @@ function renderImgs(imgs) {
 
     document.querySelector('.imgs-container').innerHTML = strHtml;
 }
+
+//READ
+function _getImgSrc(imgId) {
+    // imgIdx needed to find img src url in gImgs[]
+    var imgIdx = gImgs.findIndex(function (img) {
+        return imgId === img.id;
+    });
+
+    return gImgs[imgIdx].url;
+}
+

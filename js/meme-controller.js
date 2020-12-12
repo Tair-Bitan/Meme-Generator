@@ -48,7 +48,7 @@ function onSetFocus() {
 
 function handleKey(ev) {
     if (ev.keyCode === 13) {
-        onChangeLine();
+        onAddLine();
     }
 }
 
@@ -63,11 +63,14 @@ function onChangeLine() {
 }
 
 function onAddLine() {
-
+    createLines();
+    gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    drawImg();
 }
 
 function onRemoveLine() {
-
+    removeLines();
+    drawImg();
 }
 
 function onChangeSize(diff) {

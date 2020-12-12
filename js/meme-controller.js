@@ -3,6 +3,9 @@
 var gCanvas;
 var gCtx;
 
+// var gSavedCanvas;
+// var gSavedCtx;
+
 function onInit() {
     renderImgs(gImgs);
     gCanvas = document.querySelector('canvas');
@@ -33,6 +36,10 @@ function onShowGallery() {
 
     var elSearch = document.querySelector('input[name="search"]');
     elSearch.style.display = 'inline-block';
+
+    var elSaved = document.querySelector('.saved-imgs-container');
+    elSaved.style.display = 'none';
+
 }
 
 function onType() {
@@ -113,3 +120,35 @@ function onSearch() {
     var filtered = filterBySearch(elInput);
     renderImgs(filtered);
 }
+
+function onSave() {
+    gSavedMemes.push(gCanvas.toDataURL('image/jpeg'));
+    saveToStorage(SAVED, gSavedMemes);
+}
+
+function onLoadSaved() {
+    var elSaved = document.querySelector('.saved-imgs-container');
+    elSaved.style.display = 'block';
+
+    var elGallery = document.querySelector('.gallery');
+    elGallery.style.display = 'none';
+
+    var elSearch = document.querySelector('input[name="search"]');
+    elSearch.style.display = 'none';
+
+    var elMain = document.querySelector('.main-container');
+    elMain.classList.remove('flex');
+    var data = loadFromStorage(SAVED);
+    openSaved(data);
+}
+
+function onShowModal() {
+    var elModal = document.querySelector('.modal');
+    elModal.style.top = '50%';
+}
+
+function onCloseModal() {
+    var elModal = document.querySelector('.modal');
+    elModal.style.top = '-100%';
+}
+

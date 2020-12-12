@@ -22,8 +22,8 @@
 
             <ul class="main-nav clean-list flex">
                 <li class="flex align-center" href="#" onclick="onShowGallery()">Gallery</li>
-                <li class="flex align-center" href="#">Saved</li>
-                <li class="flex align-center" href="#">About</li>
+                <li class="flex align-center" href="#" onclick="onLoadSaved()">Saved</li>
+                <li class="flex align-center" href="#" onclick="onShowModal()">About</li>
             </ul>
             <!-- <button class="menu-btn" onclick="onToggleMenu()">☰</button> -->
         </header>
@@ -107,9 +107,13 @@
             </div>
 
             <a href="#" class="download" onclick="onDownload(this)" download="my-meme.jpg">Download</a>
-            <a href="#" class="share">Share</a>
+            <a href="#" class="share" onclick="onSave()">Save</a>
         </div>
 
+    </section>
+
+    <section class="saved-imgs-container">
+        <div class="saved-imgs flex"></div>
     </section>
 
     <footer class="main-footer">
@@ -136,7 +140,21 @@
         </div>
 
     </footer>
+    <div class="modal">
+        <h2>Welcome To My Meme Generator!</h2>
+        <ul class="clean-list">
+            <h4>Choose an image of your choice, or simply search for a theme.</h4>
+            <h4>In the editor area just type whatever comes to mind.</h4>
+            <h4>You can add as much lines as you wish.</h4>
+            <h4>You can change the style, position, size and alignment of your text. </h4>
+            <h4>If you wish, you can add lines by pressing the SPACE key in your keyboard and skip between lines by
+                ENTER.</h4>
+            <button onclick="onCloseModal()">OK Got It!</button>
+        </ul>
+    </div>
 
+
+    <script src="js/storage-service.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
 </body>

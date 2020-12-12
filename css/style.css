@@ -72,9 +72,11 @@ li:hover {
 }
 
 /* SEARCH NAV */
-form{
+
+form {
     text-align: center;
 }
+
 .search input[type="text"] {
     width: 20em;
     height: 3em;
@@ -83,16 +85,6 @@ form{
 
 .search input[type="text"]:focus {
     outline-style: none;
-}
-
-.search button {
-    font-size: 1.2em;
-    margin-inline-start: -30px;
-    background-color: whitesmoke;
-    border: none;
-    border-radius: .9em;
-    /* padding: .5em; */
-    height: 3em;
 }
 
 /* GALLERY */
@@ -290,6 +282,55 @@ select:hover {
     color: black;
     opacity: 0.8;
     transform: scale(1.5);
+}
+
+/* MODAL */
+
+.modal {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: #ff7f00;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2em;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
+    transition: 1.3s ease-in-out;
+}
+
+.modal h2 {
+    color: whitesmoke;
+}
+
+.modal button {
+    background-color: whitesmoke;
+    border: none;
+    border-radius: .9em;
+    margin: 1em;
+    padding: .5em;
+    transition: .3s;
+}
+
+.modal button:hover {
+    transform: scale(1.3);
+}
+
+/* SAVED */
+
+.saved-imgs-container {
+    display: none;
+    margin: 1em;
+    justify-items: center;
+}
+
+.saved-imgs {
+    max-width: 50%;
+}
+
+.saved-imgs img {
+    width: 50%;
+    object-fit: cover;
+    margin: 1em;
 }
 
 /* HELPERS */

@@ -1,5 +1,9 @@
 'use strict'
 // ---------------------------------------- DATA -------------------------------------------
+
+const SAVED = 'saved';
+var gSavedMemes = [];
+
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', ratio: 'square', keywords: ['man', 'angry', 'people', 'all'] },
     { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', ratio: 'square', keywords: ['cute', 'animals', 'dogs', 'all'] },
@@ -190,7 +194,7 @@ function drawText(line) {
 }
 
 function renderImgs(imgs) {
-    var strHtml = imgs.map(function (img) {
+    var strHtml = imgs.map(img => {
         return `
                 <img onclick="onChooseImg(${img.id},this)" class="${img.ratio}" id="${img.id}" src="${img.url}">
                `
@@ -199,6 +203,15 @@ function renderImgs(imgs) {
 
     document.querySelector('.imgs-container').innerHTML = strHtml;
 }
+
+function openSaved(data) {
+    var strHtml = data.map(image => {
+        return ` <img src="${image}"> `
+    })
+        .join(' ');
+    document.querySelector('.saved-imgs').innerHTML = strHtml;
+}
+
 
 //READ
 function _getImgSrc(imgId) {

@@ -62,6 +62,7 @@ var gMeme = {
 // ----------------------------------- MEME MANIPULATIONS --------------------------------------
 //UPDATE
 function updateText(newText) {
+    if (gMeme.lines.length === 0) createLines();
     gMeme.lines[gMeme.selectedLineIdx].text = newText;
 }
 
@@ -140,6 +141,7 @@ function filterBySearch(input) {
 function setFocus(currLine) {
     // currLine = gMeme.selectedLineIdx
     console.log('focus on lineindx', currLine);
+    if (gMeme.lines.length === 0) createLines();
     gMeme.lines.forEach(line => line.isFocused = false);
     gMeme.lines[currLine].isFocused = true;
 }

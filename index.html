@@ -14,7 +14,7 @@
     <title>Meme Generator</title>
 </head>
 
-<body onload="onInit()" class="flex col space-between">
+<body onload="onInit()" class="">
     <div class=" main-header-container">
         <header class="main-header main-layout flex space-between align-center">
 
@@ -25,15 +25,14 @@
                 <li class="flex align-center" href="#" onclick="onLoadSaved()">Saved</li>
                 <li class="flex align-center" href="#" onclick="onShowModal()">About</li>
             </ul>
-            <!-- <button class="menu-btn" onclick="onToggleMenu()">☰</button> -->
+            <button class="menu-btn" onclick="onToggleMenu()">☰</button>
         </header>
     </div>
     <form action="" class="search">
         <input type="text" name="search" placeholder="search by key words   (example:people)" oninput="onSearch()">
     </form>
     <section class="gallery">
-        <div class="imgs imgs-container grid">Couldn't Load Images</div>
-
+        <div class="imgs imgs-container main-layout">Couldn't Load Images</div>
     </section>
 
     <section class="main-container main-layout space-between">
@@ -119,7 +118,8 @@
     <footer class="main-footer">
         <div class="footer-container main-layout flex col align-center space-between">
             <div><a href="#" class="logo">Meme Generator</a></div>
-            <small>© 2020 MemeGen.com - All Rights Reserved - Made With ❤️ By Tair Bitan</small>
+            <small>© 2020 MemeGen.com - All Rights Reserved</small>
+            <small> Made By Tair Bitan</small>
             <div class="social-container">
                 <ul class="social-nav clean-list inline-flex">
                     <li>
@@ -141,7 +141,7 @@
 
     </footer>
     <div class="modal">
-        <h2>Welcome To My Meme Generator!</h2>
+        <h2>Welcome To Meme Generator!</h2>
         <ul class="clean-list">
             <h4>Choose an image of your choice, or simply search for a theme.</h4>
             <h4>In the editor area just type whatever comes to mind.</h4>

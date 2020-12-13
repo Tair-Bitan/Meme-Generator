@@ -68,6 +68,7 @@ function updateSize(diff) {
 }
 
 function updatePosY(diff) {
+    // currPosY = gMeme.lines[gMeme.selectedLineIdx].pos.y
     if (gMeme.lines[gMeme.selectedLineIdx].pos.y >= gCanvas.height) {
         gMeme.lines[gMeme.selectedLineIdx].pos.y -= 10;
     }
@@ -125,6 +126,7 @@ function filterBySearch(input) {
 }
 
 function setFocus(currLine) {
+    // currLine = gMeme.selectedLineIdx
     console.log('focus on lineindx', currLine);
     gMeme.lines.forEach(line => line.isFocused = false);
     gMeme.lines[currLine].isFocused = true;

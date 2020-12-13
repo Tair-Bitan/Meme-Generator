@@ -22,7 +22,7 @@ function onChooseImg(imgId) {
 
     var elSearch = document.querySelector('input[name="search"]');
     elSearch.style.display = 'none';
-
+    // Updates the services but doesn't call gMeme directly
     gMeme.selectedImgId = imgId;
     drawImg();
 }

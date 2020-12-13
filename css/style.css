@@ -12,13 +12,12 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: 0 auto;
     height: 100vh;
 }
 
 img {
     width: 100%;
-    height: 100%;
     object-fit: cover;
 }
 
@@ -44,7 +43,7 @@ li:hover {
 /* LAYOUT */
 
 .main-layout {
-    max-width: 981px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -56,8 +55,9 @@ li:hover {
 /* HEADER */
 
 .main-header-container {
-    /* position: fixed; FOR SCROLLING, CONSIDERUSING ON MOBILE */
-    width: 100vw;
+    position: fixed;
+    top: 0;
+    width: 100%;
     background-color: #ff7f00;
     color: whitesmoke;
 }
@@ -71,10 +71,15 @@ li:hover {
     padding: 2em;
 }
 
+.main-header .menu-btn {
+    display: none;
+}
+
 /* SEARCH NAV */
 
 form {
     text-align: center;
+    margin-top: 150px;
 }
 
 .search input[type="text"] {
@@ -90,27 +95,28 @@ form {
 /* GALLERY */
 
 .gallery {
-    margin: 2em 0;
+    background-color: yellow;
+    margin: 2em;
 }
 
 .imgs-container {
-    margin: 1em;
+    background-color: pink;
+    display: grid;
+    margin: 2.5em auto;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 10px;
     justify-items: center;
-    height: 100%;
-    /* width: 100%; */
 }
 
 .imgs-container img {
     width: 100%;
-    height: 100%;
     transition: 0.3s;
+    border-radius: .5em;
 }
 
 .imgs-container img:hover {
     cursor: pointer;
-    transform: scale(1.3);
+    transform: scale(1.2);
 }
 
 .square {
@@ -139,6 +145,7 @@ form {
 .first-panel {
     flex-grow: 1;
     flex-basis: 50%;
+    align-self: center;
 }
 
 canvas {
@@ -296,6 +303,7 @@ select:hover {
     text-align: center;
     transform: translateX(-50%) translateY(-50%);
     transition: 1.3s ease-in-out;
+    border-radius: .5em;
 }
 
 .modal h2 {
@@ -335,13 +343,6 @@ select:hover {
 
 /* HELPERS */
 
-/* grid-helpers */
-
-.grid {
-    display: grid;
-    color: black;
-}
-
 /* flex-helpers */
 
 .flex {
@@ -379,11 +380,30 @@ select:hover {
 /* SCREENS */
 
 @media (max-width: 550px) {
+    .main-header .main-nav {
+        display: none;
+    }
+    .main-header .menu-btn {
+        display: inline;
+        background-color: transparent;
+        border: none;
+        font-size: 32px;
+        color: whitesmoke;
+    }
+    .search input[name="search"] {
+        margin: 0 auto;
+        width: 250px;
+    }
     .main-container {
         flex-direction: column;
+        align-content: center;
     }
     .second-panel {
         margin-inline-start: 0;
+    }
+    canvas {
+        height: 270px;
+        width: 270px;
     }
 }
 
@@ -393,6 +413,8 @@ select:hover {
     }
     .second-panel {
         margin-inline-start: 0;
+        width: 400px;
+        align-self: center;
     }
 }
 

@@ -16,6 +16,24 @@ body {
     height: 100vh;
 }
 
+.main-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgb(0 0 0 / 40%);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .8s;
+}
+
+body.open-menu .main-screen {
+    visibility: visible;
+    opacity: 1;
+}
+
 img {
     width: 100%;
     object-fit: cover;
@@ -85,22 +103,33 @@ form {
 .search input[type="text"] {
     width: 20em;
     height: 3em;
-    margin-inline-end: 0px;
+    align-self: center;
 }
 
 .search input[type="text"]:focus {
     outline-style: none;
 }
 
+.keywords {
+    background-color: #ff7f00;
+    color: whitesmoke;
+    align-self: center;
+    border-radius: 1em;
+    width: 80vw;
+    overflow: hidden;
+}
+
+.keywords li {
+    margin: 1em;
+}
+
 /* GALLERY */
 
 .gallery {
-    background-color: yellow;
     margin: 2em;
 }
 
 .imgs-container {
-    background-color: pink;
     display: grid;
     margin: 2.5em auto;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -380,9 +409,6 @@ select:hover {
 /* SCREENS */
 
 @media (max-width: 550px) {
-    .main-header .main-nav {
-        display: none;
-    }
     .main-header .menu-btn {
         display: inline;
         background-color: transparent;
@@ -394,6 +420,10 @@ select:hover {
         margin: 0 auto;
         width: 250px;
     }
+
+    .keywords{
+        margin-top: 1em;
+    }
     .main-container {
         flex-direction: column;
         align-content: center;
@@ -404,6 +434,29 @@ select:hover {
     canvas {
         height: 270px;
         width: 270px;
+    }
+    .main-header .main-nav {
+        position: fixed;
+        flex-direction: column;
+        justify-content: flex-end;
+        left: 50%;
+        top: 3.8em;
+        transform: translateX(-50%);
+        max-height: 0px;
+        background-color: #ff7f00;
+        overflow: hidden;
+        transition: max-height 1.4s;
+    }
+    .main-header .main-nav li {
+        width: 80vw;
+        display: block;
+        text-align: center;
+        border-bottom: 1px solid #797979;
+        border-top: 1px solid #797979;
+    }
+    body.open-menu .main-header .main-nav {
+        top: 3.5em;
+        max-height: 100vh;
     }
 }
 

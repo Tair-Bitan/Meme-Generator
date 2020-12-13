@@ -3,8 +3,6 @@
 var gCanvas;
 var gCtx;
 
-// var gSavedCanvas;
-// var gSavedCtx;
 
 function onInit() {
     renderImgs(gImgs);
@@ -16,6 +14,9 @@ function onInit() {
 function onChooseImg(imgId) {
     var elGallery = document.querySelector('.gallery');
     elGallery.style.display = 'none';
+
+    var elWords = document.querySelector('.keywords');
+    elWords.style.display = 'none';
 
     var elMain = document.querySelector('.main-container');
     elMain.classList.add('flex');
@@ -29,7 +30,7 @@ function onChooseImg(imgId) {
 
 function onShowGallery() {
     var elGallery = document.querySelector('.gallery');
-    elGallery.style.display = 'grid';
+    elGallery.style.display = 'block';
 
     var elMain = document.querySelector('.main-container');
     elMain.classList.remove('flex');
@@ -56,9 +57,6 @@ function onSetFocus() {
 function handleKey(ev) {
     if (ev.keyCode === 13) {
         onChangeLine();
-    } else if (ev.keyCode === 32) {
-        onAddLine();
-        drawImg();
     }
 }
 
@@ -121,6 +119,19 @@ function onSearch() {
     renderImgs(filtered);
 }
 
+function onKeyword(word) {
+    updateKeyFont(word);
+    document.querySelector('input[name="search"]').value = word;
+    var filtered = filterBySearch(word);
+    renderImgs(filtered);
+}
+
+function onCanvasClick(ev) {
+    var { offsetX, offsetY } = ev;
+    checkLine(offsetX, offsetY);
+    // updateLocation(offsetX, offsetY);
+}
+
 function onSave() {
     gSavedMemes.push(gCanvas.toDataURL('image/jpeg'));
     saveToStorage(SAVED, gSavedMemes);
@@ -152,3 +163,6 @@ function onCloseModal() {
     elModal.style.top = '-100%';
 }
 
+function onToggleMenu() {
+    document.body.classList.toggle('open-menu');
+}

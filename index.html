@@ -15,6 +15,7 @@
 </head>
 
 <body onload="onInit()" class="">
+    <div class="main-screen" onclick="onToggleMenu()"></div>
     <div class=" main-header-container">
         <header class="main-header main-layout flex space-between align-center">
 
@@ -28,8 +29,24 @@
             <button class="menu-btn" onclick="onToggleMenu()">☰</button>
         </header>
     </div>
-    <form action="" class="search">
-        <input type="text" name="search" placeholder="search by key words   (example:people)" oninput="onSearch()">
+    <form action="" class="search flex col">
+        <input type="text" name="search" placeholder="search by key words (example:people)" oninput="onSearch()">
+        <ul class="keywords clean-list flex center">
+            <li onclick="onKeyword(this.innerText)">man</li>
+            <li onclick="onKeyword(this.innerText)">angry</li>
+            <li onclick="onKeyword(this.innerText)">people</li>
+            <li onclick="onKeyword(this.innerText)">cute</li>
+            <li onclick="onKeyword(this.innerText)">animals</li>
+            <li onclick="onKeyword(this.innerText)">dogs</li>
+            <li onclick="onKeyword(this.innerText)">cats</li>
+            <li onclick="onKeyword(this.innerText)">child</li>
+            <li onclick="onKeyword(this.innerText)">funny</li>
+            <li onclick="onKeyword(this.innerText)">baby</li>
+            <li onclick="onKeyword(this.innerText)">curious</li>
+            <li onclick="onKeyword(this.innerText)">happy</li>
+            <li onclick="onKeyword(this.innerText)">sport</li>
+            <li onclick="onKeyword(this.innerText)">kiss</li>
+        </ul>
     </form>
     <section class="gallery">
         <div class="imgs imgs-container main-layout">Couldn't Load Images</div>
@@ -38,7 +55,7 @@
     <section class="main-container main-layout space-between">
 
         <div class="first-panel canvas-container">
-            <canvas id="my-canvas" height="400" width="400"></canvas>
+            <canvas id="my-canvas" height="400" width="400" onclick="onCanvasClick(event)"></canvas>
         </div>
 
         <div class="second-panel editor-container flex col space-between align-center">
@@ -147,8 +164,7 @@
             <h4>In the editor area just type whatever comes to mind.</h4>
             <h4>You can add as much lines as you wish.</h4>
             <h4>You can change the style, position, size and alignment of your text. </h4>
-            <h4>If you wish, you can add lines by pressing the SPACE key in your keyboard and skip between lines by
-                ENTER.</h4>
+            <h4>If you wish, you can add lines and skip between them by pressing the ENTER key in your keyboard </h4>
             <button onclick="onCloseModal()">OK Got It!</button>
         </ul>
     </div>

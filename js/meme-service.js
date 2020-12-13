@@ -4,13 +4,15 @@
 const SAVED = 'saved';
 var gSavedMemes = [];
 
+var gKeyWords = ['man', 'angry', 'people', 'cute', 'animals', 'dogs', 'cats', 'child', 'funny', 'baby', 'curious', 'happy', 'sport', 'kiss'];
+
 var gImgs = [
     { id: 1, url: 'imgs/meme-imgs (square)/1.jpg', ratio: 'square', keywords: ['man', 'angry', 'people', 'all'] },
     { id: 2, url: 'imgs/meme-imgs (square)/2.jpg', ratio: 'square', keywords: ['cute', 'animals', 'dogs', 'all'] },
     { id: 3, url: 'imgs/meme-imgs (square)/3.jpg', ratio: 'square', keywords: ['cute', 'animals', 'people', 'dogs', 'all'] },
-    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', ratio: 'square', keywords: ['animala', 'cute', 'cats', 'all'] },
+    { id: 4, url: 'imgs/meme-imgs (square)/4.jpg', ratio: 'square', keywords: ['animals', 'cute', 'cats', 'all'] },
     { id: 5, url: 'imgs/meme-imgs (square)/5.jpg', ratio: 'square', keywords: ['cute', 'people', 'child', 'funny', 'baby', 'angry', 'all'] },
-    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', ratio: 'square', keywords: ['people', 'aliens', 'man', 'all'] },
+    { id: 6, url: 'imgs/meme-imgs (square)/6.jpg', ratio: 'square', keywords: ['people', 'man', 'all'] },
     { id: 7, url: 'imgs/meme-imgs (square)/7.jpg', ratio: 'square', keywords: ['cute', 'people', 'child', 'funny', 'baby', 'curious', 'all'] },
     { id: 8, url: 'imgs/meme-imgs (square)/8.jpg', ratio: 'square', keywords: ['happy', 'people', 'all'] },
     { id: 9, url: 'imgs/meme-imgs (square)/9.jpg', ratio: 'square', keywords: ['happy', 'people', 'child', 'baby', 'funny', 'all'] },
@@ -97,6 +99,16 @@ function updatePosX(dir) {
     }
 }
 
+function checkLine(x, y) {
+    var clickedLine = gMeme.lines.findIndex(line => {
+        return x >= line.pos.x - 100 && x <= line.pos.x + 100
+            && y >= line.pos.y - 50 && y <= line.pos.y + 50
+    });
+    gMeme.selectedLineIdx = clickedLine;
+    setFocus(clickedLine); //TO FIX DOESNT WORK WELL IN MOBILE
+    drawImg();
+}
+
 function updateFont(newFont) {
     gMeme.lines[gMeme.selectedLineIdx].font = newFont;
 }
@@ -130,6 +142,16 @@ function setFocus(currLine) {
     console.log('focus on lineindx', currLine);
     gMeme.lines.forEach(line => line.isFocused = false);
     gMeme.lines[currLine].isFocused = true;
+}
+
+function updateKeyFont(word) {
+    var keyWord = gKeyWords.find(key => {
+        return word === key;
+    });
+
+    console.log('adding to', keyWord);
+    // need to fix
+
 }
 
 // ----------------------------------- CREATE \ DELETE LINES --------------------------------------
@@ -218,7 +240,7 @@ function openSaved(data) {
 //READ
 function _getImgSrc(imgId) {
     // imgIdx needed to find img src url in gImgs[]
-    var imgIdx = gImgs.findIndex(function (img) {
+    var imgIdx = gImgs.findIndex(img => {
         return imgId === img.id;
     });
 
